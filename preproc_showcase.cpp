@@ -15,7 +15,12 @@ int main(int argc, char* argv[]) {
     }
     std::ifstream src_file(args_vec[1]);
     std::string src_contents = read(src_file);
-    std::string prep_src_contents = preprocessed(src_contents);
-    std::cout << prep_src_contents << '\n';
+    std::string preped_src_contents = preprocessed(src_contents);
+    // std::cout << preped_src_contents;
+    if (args_vec.size() == 2) {
+        std::ofstream preped_file("src-out/preped_" + args_vec[1]);
+        preped_file << preped_src_contents << '\n';
+    }
+    
     return 0;
 }
