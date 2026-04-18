@@ -5,7 +5,7 @@
 /* Comment 2 */
 
 int main() {
-                    printf("Hello world!\n"); // another comment
+                    printf(      "Hello world!\n"       ); // another comment
 
 
 
