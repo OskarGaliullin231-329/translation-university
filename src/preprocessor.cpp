@@ -22,9 +22,9 @@ std::string no_comments(const std::string& input) {
     return result;
 }
 
-std::string no_directives(std::string& input) {
+std::string no_directives(const std::string& input) {
     std::string result = input;
-    std::regex dir_expr("#[a-zA-Z]*[^\n]*( |\n|$)+");
+    std::regex dir_expr("#[a-zA-Z]*[^\n]*(\n)+");
     result = std::regex_replace(result, dir_expr, "");
     return result;
 }
@@ -53,7 +53,7 @@ std::string preprocessed(const std::string& input) {
     }
     if (stray_ocs_line == -1) {
         if (ocs_counter == ccs_counter) {
-            result = no_empty_symbols(no_comments(input));
+            result = no_empty_symbols(no_comments(no_directives(input)));
         }
         else {
             std::cout << "Stray end of multi-line comment occured at line " << stray_ccs_line << ".\n";
