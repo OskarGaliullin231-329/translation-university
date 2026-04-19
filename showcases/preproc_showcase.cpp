@@ -3,23 +3,33 @@
 #include <iostream>
 #include <vector>
 
-#include "include/preprocessor.h"
-#include "include/utility_funcs.h"
+#include "preprocessor.h"
+#include "utility_funcs.h"
 
 int main(int argc, char* argv[]) {
     std::vector<std::string> args_vec;
     get_cmd_args(argc, argv, args_vec);
     if (args_vec.size() < 2) {
-        std::cout << "You didn't specify name of the source file.\n";
+        std::cerr << "You didn't specify name of the source file.\n";
         return 1;
     }
-    std::ifstream src_file(args_vec[1]);
-    std::string src_contents = read(src_file);
-    std::string preped_src_contents = preprocessed(src_contents);
     // std::cout << preped_src_contents;
-    if (args_vec.size() == 2) {
-        std::ofstream preped_file("src-out/preped_" + args_vec[1]);
-        preped_file << preped_src_contents << '\n';
+    else if (args_vec.size() == 2) {
+        std::ifstream src_file(args_vec[1]);
+        if (src_file.good()) {
+            std::string src_contents = read(src_file);
+            std::string preped_src_contents = preprocessed(src_contents);
+            std::ofstream preped_file("src-out/preped_" + args_vec[1]);
+            preped_file << preped_src_contents << '\n';
+        }
+        else {
+            std::cerr << "There is no file located by given path.\n";
+        }
+        src_file.close();
+    }
+    else {
+        std::cerr << "Too much argumets given.\n";
+        return 1;
     }
     
     return 0;

@@ -1,9 +1,9 @@
 CXX = g++
 
-# CXXFLAGS = -Wall -Werror -Wextra -I include
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -I include
+# CXXFLAGS = -Wall -Werror -Wextra
 
-SRCS = preproc_showcase.cpp src/preprocessor.cpp src/utility_funcs.cpp
+SRCS = showcases/preproc_showcase.cpp src/preprocessor.cpp src/utility_funcs.cpp
 
 OBJS = $(SRCS:src/%.cpp=bin/%.o)
 
