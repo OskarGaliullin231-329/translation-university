@@ -25,6 +25,7 @@ std::string no_comments(const std::string& input) {
 std::string no_directives(std::string& input) {
     std::string result = input;
     std::regex dir_expr("#[a-zA-Z]*[^\n]*( |\n|$)+");
+    result = std::regex_replace(result, dir_expr, "");
     return result;
 }
 
@@ -39,12 +40,12 @@ std::string preprocessed(const std::string& input) {
     u_int32_t EOL_counter = 1;
     for (u_int32_t i = 1; i < input.size(); i++) {
         if (input[i] == '\n') { EOL_counter++; }
-        if (input.substr(i - 1, i) == open_com_sym) {
+        if (input.substr(i - 1, 2) == open_com_sym) {
             stray_ocs_line = EOL_counter;
             stray_ccs_line = -1;
             ocs_counter++;
         }
-        else if (input.substr(i - 1, i) == close_com_sym) {
+        else if (input.substr(i - 1, 2) == close_com_sym) {
             stray_ocs_line = -1;
             stray_ccs_line = EOL_counter;
             ccs_counter++;

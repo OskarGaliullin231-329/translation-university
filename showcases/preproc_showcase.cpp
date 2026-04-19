@@ -24,6 +24,8 @@ int main(int argc, char* argv[]) {
         }
         else {
             std::cerr << "There is no file located by given path.\n";
+            src_file.close();
+            return 1;
         }
         src_file.close();
     }
