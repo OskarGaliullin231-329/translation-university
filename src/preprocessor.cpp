@@ -1,4 +1,4 @@
-#include "../include/preprocessor.h"
+#include "preprocessor.h"
 
 #include <iostream>
 #include <regex>
@@ -56,11 +56,11 @@ std::string preprocessed(const std::string& input) {
             result = no_empty_symbols(no_comments(no_directives(input)));
         }
         else {
-            std::cout << "Stray end of multi-line comment occured at line " << stray_ccs_line << ".\n";
+            std::cout << "Preprocessor: Stray end of multi-line comment occured at line " << stray_ccs_line << ".\n";
         }
     }
     else {
-        std::cout << "Stray beginning of multi-line comment occured at line " << stray_ocs_line << ".\n";
+        std::cout << "Preprocessor: Stray beginning of multi-line comment occured at line " << stray_ocs_line << ".\n";
     }
     return result;
 }
