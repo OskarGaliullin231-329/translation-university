@@ -1,4 +1,4 @@
-#include "../include/utility_funcs.h"
+#include "utility_funcs.h"
 
 #include <fstream>
 #include <string>

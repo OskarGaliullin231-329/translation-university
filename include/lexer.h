@@ -10,8 +10,7 @@ enum class TokenType {
     KEY,
     DEL,
     OP,
-    LIT,
-    ERR
+    LIT
 };
 
 void lexer_process(const std::string&, std::list<std::pair<std::string, TokenType>>&);
