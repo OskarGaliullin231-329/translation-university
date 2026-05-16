@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <regex>
+#include <sstream>
 #include <string>
 
 std::string no_empty_symbols(const std::string& input) {
