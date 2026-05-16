@@ -206,7 +206,10 @@ void lexer_process(const std::string& input, std::list<std::pair<std::string, To
             }
             // string literals handler
             case '"': {
-                token = "\"" + read_str_liter(input, i + 1) + "\"";
+                token = read_str_liter(input, i + 1);
+                if (!token.empty()) {
+                    token = "\"" + token + "\"";
+                }
                 i += token.size() - 1;
                 token_type = TokenType::LIT;
                 break;
