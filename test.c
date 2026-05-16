@@ -14,8 +14,8 @@ int main() {
     let's declare some variables
     */
     int a=2;
-    int b=3;
-    int result;
+    float b=3.14;
+    float result;
 
     result = a + b; // and let's see summation result
     
