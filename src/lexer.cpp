@@ -10,7 +10,6 @@
 
 typedef std::list<std::pair<std::string, TokenType>> tokens_list;
 
-
 std::string read_identifier(const std::string& input, int index, TokenType& tt, std::unordered_set<std::string>& key_words) {
     std::string result;
     for (std::size_t i = index; i < input.size(); i++) {
@@ -106,6 +105,7 @@ std::string read_ch_liter(const std::string& input, int index) {
     }
     else if (result.size() > 1) {
         std::cerr << "Lexer - read_ch_literal: Too much symbols in character literal.\n";
+        result = "";
     }
     if (input.size() == i) {
         std::cerr << "Lexer - read_ch_literal: Unclosed qoutes occured.\n";
@@ -145,6 +145,7 @@ void lexer_process(const std::string& input, std::list<std::pair<std::string, To
         "volatile",
         "extern",
         "register",
+        // type wrapers
         "union",
         "auto",
         // switch-case
@@ -223,7 +224,7 @@ void lexer_process(const std::string& input, std::list<std::pair<std::string, To
             }
             // delimiter handler
             case ' ': case '\t': case '\n': case ';': case ',': 
-            case '(': case ')':  case '{':  case '}': {                
+            case '(': case ')':  case '{':  case '}': case '[': case ']': {                
                 token.clear();
                 token += input[i];
                 token_type = TokenType::DEL;
