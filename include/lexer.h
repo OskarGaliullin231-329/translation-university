@@ -5,13 +5,7 @@
 #include <utility>
 #include <string>
 
-enum class TokenType {
-    ID,
-    KEY,
-    DEL,
-    OP,
-    LIT
-};
+#include "TokenType.h"
 
 void lexer_process(const std::string&, std::list<std::pair<std::string, TokenType>>&);
 
