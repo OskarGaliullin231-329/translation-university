@@ -21,7 +21,9 @@ int main() {
     
     printf("%d", result==a+b);
 
-    some_function();
+    for (int i = 0; i < 10; i++) {
+        some_function();
+    }
 
     SomeStruct s_s;
     s_s.id = 0;

@@ -1,5 +1,7 @@
-#ifndef TOKENYPE_H_
-#define TOKENYPE_H_
+#ifndef TOKENTYPE_H_
+#define TOKENTYPE_H_
+
+#include <cstdint>
 
 enum class TokenType {
     ID,
@@ -9,58 +11,73 @@ enum class TokenType {
     LIT
 };
 
-enum class ID {
-    VarName,
-    FuncName,
-    TypeName
+
+struct TTClass {
+    u_int8_t ID  = 0b0;
+    u_int8_t KEY = 0b0;
+    u_int8_t DEL = 0b0;
+    u_int8_t OP  = 0b0;
+    u_int8_t LIT = 0b0;
 };
 
-enum class KeyWord {
-    TypeName,
-    TypeSpec,
-    VarSpec,
-    TypeWrap,
-    SwPart,
-    CondPart,
-    Loop,
-    LpManag,
-    TypeDecl,
-    Other
-};
+/*
+Last bit of field TTClass type is responsible for belonging to type.
+Every next bit is responsible for belonging to subtype of lexem.
+For example "ID = 0b101" stands for identrificator of function name.  
+*/
 
-enum class Delim {
-    InterToken,
-    SemiCol,
-    Comma,
-    ParRnd,
-    ParFig,
-    ParSq
-};
+// enum class ID {
+//     VarName,
+//     FuncName,
+//     TypeName
+// };
 
-enum class OperByArgNum {
-    Unary,
-    Binary,
-    Ternary
-};
+// enum class KeyWord {
+//     TypeName,
+//     TypeSpec,
+//     VarSpec,
+//     TypeWrap,
+//     SwPart,
+//     CondPart,
+//     Loop,
+//     LpManag,
+//     TypeDecl,
+//     Other
+// };
 
-enum class OperByUse {
-    Assign,
-    Value
-};
+// enum class Delim {
+//     InterToken,
+//     SemiCol,
+//     Comma,
+//     ParRnd,
+//     ParFig,
+//     ParSq
+// };
 
-enum class OperByPurp {
-    Arith,
-    Logic,
-    BitLogic,
-    IncDec,
-    Struct,
-    Comp
-};
+// enum class OperByArgNum {
+//     Unary,
+//     Binary,
+//     Ternary
+// };
 
-enum class Liter {
-    Num,
-    Char,
-    Str
-};
+// enum class OperByUse {
+//     Assign,
+//     Value
+// };
 
-#endif // TOKENYPE_H_
+// enum class OperByPurp {
+//     Arith,
+//     Logic,
+//     BitLogic,
+//     IncDec,
+//     Struct,
+//     Comp
+// };
+
+// enum class Liter {
+//     Num,
+//     Char,
+//     Str
+// };
+
+#endif // TOKENTYPE_H_
