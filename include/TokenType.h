@@ -12,19 +12,19 @@ enum class TokenType {
 };
 
 
-struct TTClass {
-    u_int8_t ID  = 0b0;
-    u_int8_t KEY = 0b0;
-    u_int8_t DEL = 0b0;
-    u_int8_t OP  = 0b0;
-    u_int8_t LIT = 0b0;
-};
+// struct TTClass {
+//     u_int8_t ID  = 0b0;
+//     u_int8_t KEY = 0b0;
+//     u_int8_t DEL = 0b0;
+//     u_int8_t OP  = 0b0;
+//     u_int8_t LIT = 0b0;
+// };
 
-/*
-Last bit of field TTClass type is responsible for belonging to type.
-Every next bit is responsible for belonging to subtype of lexem.
-For example "ID = 0b101" stands for identrificator of function name.  
-*/
+// /*
+// Last bit of field TTClass type is responsible for belonging to type.
+// Every next bit is responsible for belonging to subtype of lexem.
+// For example "ID = 0b101" stands for identrificator of function name.  
+// */
 
 // enum class ID {
 //     VarName,
