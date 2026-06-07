@@ -2,13 +2,19 @@
 #define PARSER_H_
 
 #include <list>
-#include <memory>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "ASTNode.h"
 #include "TokenType.h"
 
-void parse(const std::list<std::pair<std::string, TokenType>>&, std::shared_ptr<ASTNode>);
+class Parser {
+public:
+    void parse();
+
+private:
+    std::vector<std::pair<std::string, TokenType>> _tokens;
+};
 
 #endif // PARSER_H_
