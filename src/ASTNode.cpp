@@ -1,5 +1,10 @@
 #include "../include/ASTNode.h"
 
+ASTNode::ASTNode(const std::string& value)
+    : _value(value)
+{
+}
+
 bool ASTNode::appendChild(std::shared_ptr<ASTNode> node_ptr) {
     if (_children.contains(node_ptr)) {
         return false;
@@ -28,13 +33,32 @@ auto ASTNode::getChildrenEnd() {
     return _children.end();
 }
 
+void ASTNode::setValue(const std::string& value) {
+    _value = value;
+}
+
+const std::string& ASTNode::getValue() const {
+    return _value;
+}
+
 std::string ASTNode::stringify(std::size_t indent) {
-    if (_children.empty()) {
-        return "";
-    }
     std::string result(indent, ' ');
+    if (!_value.empty()) {
+        result += _value;
+    }
+    if (_children.empty()) {
+        return result;
+    }
+    if (!_value.empty()) {
+        result += "\n";
+    }
+    bool first = true;
     for (auto child : _children) {
-        result += (child->stringify(indent + 2) + "\n");
+        if (!first) {
+            result += "\n";
+        }
+        result += child->stringify(indent + 2);
+        first = false;
     }
     return result;
 }

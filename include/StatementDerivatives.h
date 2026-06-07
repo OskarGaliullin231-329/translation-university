@@ -1,6 +1,7 @@
 #ifndef STATEMENTDERIVATIVES_H_
 #define STATEMENTDERIVATIVES_H_
 
+#include "Expression.h"
 #include "Statement.h"
 
 // Statements with semicolon in the end

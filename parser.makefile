@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -I include
 # CXXFLAGS = -Wall -Werror -Wextra
 
-SRCS = src/parser.cpp src/lexer.cpp src/preprocessor.cpp src/utility_funcs.cpp
+SRCS = src/parser.cpp src/lexer.cpp src/preprocessor.cpp src/utility_funcs.cpp src/AST.cpp src/ASTNode.cpp src/Expression.cpp src/Statement.cpp src/ExpressionDerivatives.cpp src/StatementDerivatives.cpp
 MAIN_SRC = showcases/parser_showcase.cpp
 
 OBJS = $(SRCS:src/%.cpp=bin/%.o)
