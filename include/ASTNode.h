@@ -2,15 +2,24 @@
 #define ASTNODE_H_
 
 #include <memory>
-#include <vector>
+#include <unordered_set>
+
+#include "NodeTypes.h"
 
 class ASTNode {
 public:
-    bool appendChild(const ASTNode&) const;
-    std::size_t getChildNum();
+    bool addChild(std::shared_ptr<ASTNode>);
+    bool removeChild(std::shared_ptr<ASTNode>);
+    std::size_t getChildrenNum();
+    auto getChildrenBegin();
+    auto getChildrenEnd();
+    NodeType getNodeType();
 
 protected:
-    std::vector<std::shared_ptr<ASTNode>> _children;
+    NodeType _node_type;
+
+private:
+    std::unordered_set<std::shared_ptr<ASTNode>> _children;
 };
 
 #endif // ASTNODE_H_

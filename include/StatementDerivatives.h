@@ -1,126 +1,93 @@
 #ifndef STATEMENTDERIVATIVES_H_
 #define STATEMENTDERIVATIVES_H_
 
-#include "Expression.h"
+#include "DeclarationDerivatives.h"
+#include "ExpressionDerivatives.h"
 #include "Statement.h"
 
-// Statements with semicolon in the end
-class FuncDecl: public Statement {
+// if (LogicExpr) <CodeBlock>
+class IfStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    IfStat() { _node_type = NodeType::IfStat; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
-
-class VarDecl: public Statement {
+// else if (LogicExpr) <CodeBlock>
+class ElseIfStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    ElseIfStat() { _node_type = NodeType::ElseIfStat; }
+    void setIfIndex(std::size_t index) { _if_token_i = index; }
+    void setElseIndex(std::size_t index) { _else_token_i = index; }
+    std::size_t getIfIndex() { return _if_token_i; }
+    std::size_t getElseIndex() { return _else_token_i; }
+
+private:
+    std::size_t _if_token_i;
+    std::size_t _else_token_i;
 };
 
-
-class VarInit: public Statement {
+// else <CodeBlock>
+class ElseStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    ElseStat() { _node_type = NodeType::ElseStat; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
-
-class Typedef: public Statement {
+// for (<VarDecl>, <LogicExpr>, <Expr>) <CodeBlock>
+// for (<IDExpr>, <LogicExpr>, <Expr>) <CodeBlock>
+class ForStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    ForStat() { _node_type = NodeType::ForStat; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
-
-class LoopMngrs: public Statement {
+// while (<LogicExpr>) <CodeBlock>
+class WhileStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    WhileStat() { _node_type = NodeType::WhileStat; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
-
-class Goto: public Statement {
+// do <CodeBlock> while (<LogicExpr>);
+class DoWhileStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    DoWhileStat() { _node_type = NodeType::DoWhileStat; }
+    void setDoIndex(std::size_t index) { _do_token_i = index; }
+    void setWhileIndex(std::size_t index) { _while_token_i = index; }
+    std::size_t getDoIndex() { return _do_token_i; }
+    std::size_t getWhileindex() { return _while_token_i; }
+
+private:
+    std::size_t _do_token_i;
+    std::size_t _while_token_i;
 };
 
-
-class Return: public Statement {
+// <Expression>;
+class ExprStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    ExprStat() { _node_type = NodeType::ExprStat; }
 };
 
-
-class ExpresStat: public Statement {
+// <TypeNode> <IDExpr>(<VarDecl>, <VarDecl>, <VarDecl>, ...)
+class FuncDefStat: public Statement {
 public:
-    std::string stringify(std::size_t) override;
+    FuncDefStat() { _node_type = NodeType::FuncDefStat; }
 };
 
-
-// Flag for goto with colon in the end
-class GTFlag: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-// Statements with blocks of code in the end
-class FuncDef: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class IfCond: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class ElseCond: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class ElseIfCond: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class Switch: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class SwCase: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class SwDefault: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class For: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-class Do: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-// While with block of code or semicolon in the end
-// in dependency on context (does "while" follow after "do")
-class While: public Statement {
-public:
-    std::string stringify(std::size_t) override;
-};
-
-
-#endif
+#endif // STATEMENTDERIVATIVES_H_
