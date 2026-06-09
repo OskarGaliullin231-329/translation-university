@@ -9,7 +9,7 @@
 #include "DeclarationDerivatives.h"
 #include "ExpressionDerivatives.h"
 #include "StatementDerivatives.h"
-#include "TypeNode.h"
+#include "TypeNodeDerivatives.h"
 #include "TokenType.h"
 
 class Parser {

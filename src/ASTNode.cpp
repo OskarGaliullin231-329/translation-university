@@ -26,11 +26,11 @@ std::size_t ASTNode::getChildrenNum() {
     return _children.size();
 }
 
-auto ASTNode::getChildrenBegin() {
+std::unordered_set<std::shared_ptr<ASTNode>>::iterator ASTNode::getChildrenBegin() {
     return _children.begin();
 }
 
-auto ASTNode::getChildrenEnd() {
+std::unordered_set<std::shared_ptr<ASTNode>>::iterator ASTNode::getChildrenEnd() {
     return _children.end();
 }
 

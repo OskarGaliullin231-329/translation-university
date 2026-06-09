@@ -46,30 +46,55 @@ private:
 class ArithExpr: public Expression {
 public:
     ArithExpr() { _node_type = NodeType::ArithExpr; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
 // contains logical operators
 class LogicExpr: public Expression {
 public:
     LogicExpr() { _node_type = NodeType::LogicExpr; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
 // contains bitwise operators
 class BitwiseExpr: public Expression {
 public:
     BitwiseExpr() { _node_type = NodeType::BitwiseExpr; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
 // contains unary pointer operators
 class PointerExpr: public Expression {
 public:
     PointerExpr() { _node_type = NodeType::PointerExpr; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
 // contains all types of assigning operators
 class AssignExpr: public Expression {
 public:
     AssignExpr() { _node_type = NodeType::AssignExpr; }
+    void setTokenIndex(std::size_t index) { _token_i = index; }
+    std::size_t getTokenIndex() { return _token_i; }
+
+private:
+    std::size_t _token_i;
 };
 
 // (<TypeNode>)IDExpr

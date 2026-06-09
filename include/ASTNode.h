@@ -11,8 +11,8 @@ public:
     bool addChild(std::shared_ptr<ASTNode>);
     bool removeChild(std::shared_ptr<ASTNode>);
     std::size_t getChildrenNum();
-    auto getChildrenBegin();
-    auto getChildrenEnd();
+    std::unordered_set<std::shared_ptr<ASTNode>>::iterator getChildrenBegin();
+    std::unordered_set<std::shared_ptr<ASTNode>>::iterator getChildrenEnd();
     NodeType getNodeType();
 
 protected:
